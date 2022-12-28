@@ -1,0 +1,46 @@
+﻿@page
+@model IndexModel
+
+
+<div class="text-center">
+    <!-- Page Header Start -->
+    <div class="container-fluid  py-6 wow fadeIn" data-wow-delay="0.1s">
+        <img class="container-fluid  wow fadeIn" style="background-size:cover;height:350px" src="~/images/@Model.FeaturedProduct.ImageName" alt="mm">
+        <h3 class="text-gray mb-3">@Model.FeaturedProduct.Name</h3>
+        <div class="d-inline-block border border-primary rounded-pill px-3 mb-3" style="margin-top:5px">$@string.Format("{0:f}", @Model.FeaturedProduct.Price)</div>
+        <br />
+        <span>Tempor erat elitr rebum at clita dolor diam ipsum sit diam amet diam et eos</span>
+        <br />
+        <button class="btn-danger btn" asp-page="/order" asp-route-id=" @Model.FeaturedProduct.Id">Order now</button>
+    </div>
+    <!-- Page Header End -->
+    <!-- Product Start -->
+    <div class="container-xxl bg-light my-6 py-6 pt-0" style="margin: 2rem 0;">
+
+        <div class="container">
+            <div class="row g-4">
+                @foreach (var item in Model.Products)
+                {
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" style="margin-top:20px">
+                        <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
+                            <div class="text-center p-4">
+                                <div class="d-inline-block border border-primary rounded-pill px-3 mb-3">$@string.Format("{0:f}", item.Price)</div>
+                                <h3 class="mb-3">@item.Name</h3>
+                                <span>Tempor erat elitr rebum at clita dolor diam ipsum sit diam amet diam et eos</span>
+                            </div>
+                            <div class="position-relative mt-auto">
+                                <img class="img-fluid" src="~/images/@item.ImageName" alt="">
+                                <div class="product-overlay">
+                                    <a class="btn btn-lg-square btn-outline-light rounded-circle" asp-page="/order" asp-route-id="@item.Id">
+                                    <i class="fa fa-eye text-primary"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+    <!-- Product End -->
+</div>
