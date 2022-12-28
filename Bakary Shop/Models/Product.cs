@@ -17,5 +17,10 @@ namespace Bakary_Shop.Models
         public string Description { get; set; }
         public decimal Price { get; set; }
         public string ImageName { get; set; }
+
+        public static implicit operator List<object>(Product v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
